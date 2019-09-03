@@ -1,0 +1,20 @@
+arm-eabi-as -g ra183303.s -o ra183303.o
+arm-eabi-ld ra183303.o -o ra183303 -g --section-start=.iv=0x778005e0 -Ttext=0x77800700 -Tdata=0x77801800 -e 0x778005e0
+
+arm-eabi-as -g faz_nada.s -o faz_nada.o
+arm-eabi-ld faz_nada.o -o faznada -g --section-start=.iv=0x778005e0 -Ttext=0x77800700 -Tdata=0x77803000 -e 0x778005e0
+
+
+
+mksd.sh --so ra183303 --user faz_nada
+
+
+
+arm-eabi-gdb ra183303
+(gdb) target remote localhost:5000
+(gdb) b raXXXXXX.s:<108>
+(gdb) c
+(gdb) p *(int)0x77801800
+(gdb) c
+(gdb) ...
+        

@@ -1,0 +1,9 @@
+.text
+.align 4
+.globl _start
+
+_start:                         @ main
+ 
+    mov r0, #4
+    mov r7, #16
+    svc 0x0

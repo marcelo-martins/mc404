@@ -1,0 +1,20 @@
+000 01 3FF 06 051 #Carrega o tamanho em AC; Tira 1 desse valor, pois ele sera o numero de repeticoes do laco, que vai do numero ate 0
+001 21 3FF 01 3FD #Salva o novo tamanho;comeco do loop a direita, salvando o endereco do primeiro em AC
+002 12 003 0D 003 #Move o endereco de AC para a linha 3; pula para a linha 3
+003 09 000 01 3FE #Salva o endereco recebido da linha 2, que esta em AC, em MQ; salva o endereco do segundo em AC
+004 12 005 0D 005 #Move o endereco de AC para a linha 5; pula para a proxima linha
+005 0B 000 0A 000 #Multiplica o valor em MQ pelo valor recem recebido, que eh o endereco do segundo vetor; move o valor de MQ para AC
+006 05 052 21 052 #Soma esse resultado no armazenador; Salva o novo valor nele mesmo
+007 01 3FD 05 051 #Coloca o endereco do primeiro em AC, soma 1
+008 21 3FD 01 3FE #Salva novamente; coloca o endereco do segundo em AC
+009 05 051 21 3FE #Soma 1; salva novamente
+00A 01 3FF 06 051 #Coloca o tamanho em AC; subtrai um
+00B 21 3FF 10 001 #Salva nele; Pula para a instrucao a direita da linha 1
+00C 01 052 0D 400 #Coloca o resultado final em AC; termina o programa
+
+#Variaveis
+3FF 00 000 00 000 #TamanhoVetores, funciona como o contador do laco
+3FD 00 000 00 000 #EnderecoPrimeiro
+3FE 00 000 00 000 #EnderecoSegundo
+051 00 000 00 001 #Constante
+052 00 000 00 000 #Armazenador de soma
